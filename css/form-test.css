@@ -1,0 +1,84 @@
+@media screen and (max-width: 600px) {
+    form>p {
+        text-align: center;
+    }
+}
+
+input#name {
+    border: 2px solid #cccccc;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    width: 15%;
+    height: 30px;
+    min-width: 130px;
+    max-width: 250px;
+    color: #5e5e5e;
+    margin: 0 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+input[type="text"] {
+    border: 2px solid #cccccc;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -khtml-border-radius: 15px;
+    width: 30%;
+    height: 30px;
+    min-width: 200px;
+    max-width: 100%;
+    color: #5e5e5e;
+    margin: 0 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+    margin-top: 5%;
+    border: 0;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 0.8em;
+    letter-spacing: 0.075em;
+    height: 3em;
+    padding: 0 2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    background: rgb(64, 199, 129);
+    box-shadow: 0 -6px rgb(44, 146, 95) inset;
+    transition: 0.5s;
+    border-radius: 15px;
+}
+
+fieldset>p {
+    margin: 1em 0 0.5em 0;
+}
+
+fieldset>div>p {
+    margin: 0 0 0 5%;
+}
+
+fieldset>div>div>p {
+    margin: 0 0 0 5%;
+}
+
+input[type="submit"]:hover {
+    background: rgb(53, 167, 110);
+}
+
+h5 {
+    background-color: tomato;
+    border-left: 7px #dc3d21 solid;
+    color: white;
+    padding: 1%;
+    margin-left: 3%;
+    text-align: left !important;
+    width: 75%;
+}

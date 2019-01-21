@@ -1,0 +1,185 @@
+<!--ЗАЧИНАЕТСЯ РАССКАЗ-->
+
+
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Регистрация на VI Кубок Липецкой области по Спортивной Своей
+        игре среди школьников</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="/assets/css/main.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/mobile.css" rel="stylesheet">
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/noscript.css" />
+    </noscript>
+    <style>
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"],
+        button,
+        .button {
+            margin-top: 5%;
+            border: 0;
+            font-size: 0.8em;
+            height: 3em;
+            padding: 0 2em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: white;
+            background: rgb(64, 199, 129);
+            box-shadow: 0 -6px rgb(44, 146, 95) inset;
+            transition: 0.5s;
+            border-radius: 15px;
+        }
+        input[type="text"],
+        input[type="email"]{
+            border: 2px solid #cccccc;
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            -khtml-border-radius: 15px;
+            color: #5e5e5e;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        input[type="text"],
+        input[type="email"]{
+                width: 40%;
+            }
+        p{
+            text-align: left;
+            margin: 0 0 0.5em 0;
+        }
+        p:nth-child(2n+1){
+            margin: 0 0 2em 1em;
+        }
+        @media screen and (max-width: 600px) {
+            input[type="text"],
+            input[type="email"]{
+                width: 99%;
+            }
+        }
+    </style>
+</head>
+
+<body class="is-loading">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <a href="/index.html" class="logo">Лабиринт</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li><a href="/index.html">Лабиринт</a></li>
+                <li><a href="/news/news.html">Новости Лабиринта</a></li>
+                <li><a href="/team.html">Команда</a></li>
+                <li><a href="/turnir.html">Турниры</a></li>
+                <li class="active"><a href="/online.html">Онлайн-Викторины</a></li>
+            </ul>
+            <ul class="icons">
+                <li><a href="https://vk.com/labirint4836164024" target="_blank" class="icon fa-vk"><span class="label">Вк</span></a></li>
+                <li><a href="http://strategy48.ru" target="_blank" class="icon fa-chrome"><span class="label">Сайт
+                            стратегии</span></a></li>
+                <li><a href="mailto:azarnoy@mail.ru" target="_blank" class="icon fa-envelope"><span class="label">E-mail</span></a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+            <header class="major">
+
+                <form action="/form/reg-their-game.php" method="POST">
+                    <fieldset>
+                        <legend>
+                            <h2 style="letter-spacing:0;">Регистрация на VI Кубок Липецкой области по Спортивной Своей
+                                игре среди школьников</h2>
+                        </legend>
+
+                        <p style="font-size:1.4em; font-weight: 600;">
+                            <label for="name" class="no">ФИО участника(полностью)</label><br>
+                        </p>
+                        <p>
+                            <input name="name" type="text" id="name" required>
+                        </p>
+
+
+                        <p style="font-size:1.4em; font-weight: 600;">
+                            <label for="school">Образовательное Учреждение (полностью)</label><br>
+                        </p>
+                        <p>
+                            <input name="school" type="text" id="school" required>
+                        </p>
+
+
+                        <p style="font-size:1.4em; font-weight: 600; margin-bottom: 0;">
+                            <label for="clas">Класс</label><br>
+                        </p>
+                        <p style="margin: 0 0 0 2em;">
+                            <select name="clas" id="clas" required>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                            </select>
+                        </p>
+
+                        <p style="font-size:1.4em; font-weight: 600;">
+                            <label for="team">Команда</label><br>
+                        </p>
+                        <p>
+                            <input name="team" type="text" id="team" required>
+                        </p>
+
+
+                        <p style="font-size:1.4em; font-weight: 600;">
+                            <label for="email" class="no">Контактный E-mail</label><br>
+                        </p>
+                        <p>
+                            <input name="email" type="email" id="email" required>
+                        </p>
+
+                    </fieldset>
+                    <!--Кнопка отправить-->
+                    <p style="text-align: center;"><input type="submit" value="Отправить"></p>
+                </form>
+
+
+            </header>
+        </div>
+
+
+
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>Created by &copy;Sergey Pinchuk</li>
+                <li>Design by Sergey Pinchuk</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/skel.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

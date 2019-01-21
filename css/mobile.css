@@ -1,0 +1,29 @@
+@media screen and (max-width: 600px) {
+    .photo {
+        width: 100%;
+    }
+
+
+
+html {
+    -webkit-text-size-adjust: none;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    font-size: 80%;
+}
+
+
+#footer>section {
+    border-left: none;
+}
+
+#wrapper>.bg {
+    background-position: 70%, 1%;
+}
+}
