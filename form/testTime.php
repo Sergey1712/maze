@@ -52,8 +52,7 @@
         <div id="main">
             <header class="major">
             <? 
-                session_start(); 
-                echo "Вы обновили эту страницу ".$_SESSION['Username']++." раз. ";
+                echo $_POST;
             ?>
             </header>
         </div>

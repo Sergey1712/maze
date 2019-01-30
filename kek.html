@@ -50,7 +50,7 @@
                 <li><a href="mailto:azarnoy@mail.ru" target="_blank" class="icon fa-envelope"><span class="label">E-mail</span></a></li>
             </ul>
         </nav>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Main -->
         <div id="main">
             <header class="major">
@@ -58,6 +58,7 @@
                 <div id="status">
 
                 </div>
+
                 <form class="test" id="test1" method="POST">
                     <fieldset>
                         <legend>
@@ -65,10 +66,16 @@
                         </legend>
 
                         <!--Название-->
-                        <p style="font-size:1.4em; font-weight: 600;">
-                            <label for="name">Ваше имя </label>
-                            <input name="name" type="text" id="username">
-                        </p>
+                        <div class="name">
+                            <p style="font-size:1.4em; font-weight: 600;">
+                                <label for="name">Ваше имя </label>
+                                <input name="name" type="text" id="username">
+                            </p>
+                        </div>
+
+                        <div class="result">
+
+                        </div>
 
                         <!--Сами вопросы-->
                         <div class="qu1">
@@ -103,16 +110,6 @@
                             <p>Введите ответ: <input name="q3" id="lop" type="text"></p>
                         </div>
 
-
-                        <div class="qu1 no">
-                            <p>
-                                <label for="q3" style="text-align:center;"><b>3. В одной из первых книг, посвящённых
-                                        этим
-                                        людям в конце 19-го века Бодри де Сонье писал: "Охота на них является спортом
-                                        парижской полиции". Сейчас ситуация мало изменилась. Назовите их.</b></label><br>
-                            </p>
-                            <p>Введите ответ: <input name="q3" id="lop" type="text"></p>
-                        </div>
 
 
                         <div class="qu1 no">
@@ -203,87 +200,98 @@
 
 
 
+        </script>
 
-                <script>
-                    var k = 0;
-                    function lol(it) {
-                        var secs = sessionStorage.getItem('secs') || 11;
-                        var timer = setInterval(function () {
-                            secs--;
-                            it++;
-                            console.log(it);
-                            var element = document.getElementById("status");
-                            element.innerHTML = "<h2>У вас осталось <b>" + secs + "</b> секунд до закрытия вопроса</h2>";
-                            var button = document.querySelector('input[type="submit"]');
-                            button.addEventListener('click', function (evt) {
-                                it = 12;
-                            });
-                            if (it == 13) {
-                                k++;
-                                sessionStorage.removeItem('secs');
-                                clearInterval(timer);
-                                lol(0);
-                                console.log('o', k);
-                            }
-                            else if (secs < 1 && it < 12) {
-                                k++;
-                                sessionStorage.removeItem('secs');
-                                document.querySelector('input[type="submit"]').click();
-                                clearInterval(timer);
-                                console.log('o', k);
-                                lol(0);
-                            }
-                            else {
-                                sessionStorage.setItem('secs', secs);
-                            }
-                        }, 1000)
-                    }
-                </script>
-
-
-
-                <script>
-                    var func = 0;
+        <script>
+            var k = 0;
+            function lol(it) {
+                var secs = sessionStorage.getItem('secs') || 11;
+                var timer = setInterval(function () {
+                    secs--;
+                    it++;
+                    console.log(it);
+                    var element = document.getElementById("status");
+                    element.innerHTML = "<h2>У вас осталось <b>" + secs + "</b> секунд до закрытия вопроса</h2>";
                     var button = document.querySelector('input[type="submit"]');
                     button.addEventListener('click', function (evt) {
-                        evt.preventDefault();
-                        var change = document.querySelector('.qu1');
-                        change.remove();
-                        change = document.querySelector('.no');
-                        change.classList.remove('no');
+                        it = 12;
                     });
-
-
-                    function change_quest() {
-                        if (func == 0) {
-                            var username = document.getElementById('username').value;
-                            console.log('lol', username);
-                            sessionStorage.setItem('Username', username);
-                        };
-                        func++;
-                        var answer = document.getElementById('lop').value;
-                        console.log(answer);
-                        sessionStorage.setItem('Answer' + func, answer);
+                    if (k == 10) {
+                        document.getElementById("status").remove();
+                        document.querySelector('input[type="submit"]').remove();
+                        document.querySelector('.name').remove();
                     };
-                </script>
+                    if (it == 13) {
+                        k++;
+                        sessionStorage.removeItem('secs');
+                        clearInterval(timer);
+                        lol(0);
+                        console.log('o', k);
+                    }
+                    else if (secs < 1 && it < 12) {
+                        k++;
+                        sessionStorage.removeItem('secs');
+                        document.querySelector('input[type="submit"]').click();
+                        clearInterval(timer);
+                        console.log('o', k);
+                        lol(0);
+                    }
+                    else {
+                        sessionStorage.setItem('secs', secs);
+                    }
+                }, 1000)
+            }
+        </script>
 
 
-                <script>
-                    lol(0);
-                </script>
-            </header>
-        </div>
+
+        <script>
+            var func = 0;
+            var button = document.querySelector('input[type="submit"]');
+            button.addEventListener('click', function (evt) {
+                evt.preventDefault();
+                var change = document.querySelector('.qu1');
+                change.remove();
+                change = document.querySelector('.no');
+                change.classList.remove('no');
+            });
+
+
+            function change_quest() {
+                if (func == 0) {
+                    var username = document.getElementById('username').value;
+                    console.log('lol', username);
+                    sessionStorage.setItem('Username', username);
+                };
+                func++;
+                var answer = document.getElementById('lop').value;
+                console.log(answer);
+                sessionStorage.setItem('Answer' + func, answer);
+            };
+        </script>
+
+
+        <script>
+            lol(0);
+        </script>
+
+
+        <script>
+
+        </script>
+        </header>
+    </div>
 
 
 
 
-        <!-- Copyright -->
-        <div id="copyright">
-            <ul>
-                <li>Created by &copy;Sergey Pinchuk</li>
-                <li>Design by Sergey Pinchuk</li>
-            </ul>
-        </div>
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul>
+            <li>Created by &copy;Sergey Pinchuk</li>
+            <li>Design by Sergey Pinchuk</li>
+        </ul>
+    </div>
     </div>
 
     <!-- Scripts -->
