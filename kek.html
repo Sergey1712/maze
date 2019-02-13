@@ -18,8 +18,13 @@
         <link rel="stylesheet" href="/assets/css/noscript.css" />
     </noscript>
     <style>
-        .no{
+        .no {
             display: none;
+        }
+
+        .result>h2 {
+            color: #1560bd;
+            text-align: center;
         }
     </style>
 </head>
@@ -44,10 +49,12 @@
                 <li class="active"><a href="/online.html">Онлайн-Викторины</a></li>
             </ul>
             <ul class="icons">
-                <li><a href="https://vk.com/labirint4836164024" target="_blank" class="icon fa-vk"><span class="label">Вк</span></a></li>
+                <li><a href="https://vk.com/labirint4836164024" target="_blank" class="icon fa-vk"><span
+                            class="label">Вк</span></a></li>
                 <li><a href="http://strategy48.ru" target="_blank" class="icon fa-chrome"><span class="label">Сайт
                             стратегии</span></a></li>
-                <li><a href="mailto:azarnoy@mail.ru" target="_blank" class="icon fa-envelope"><span class="label">E-mail</span></a></li>
+                <li><a href="mailto:azarnoy@mail.ru" target="_blank" class="icon fa-envelope"><span
+                            class="label">E-mail</span></a></li>
             </ul>
         </nav>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -59,11 +66,16 @@
 
                 </div>
 
+
                 <form class="test" id="test1" method="POST">
                     <fieldset>
                         <legend>
                             <h2 style="letter-spacing:0;">Викторина №1</h2>
                         </legend>
+
+                        <div id="result">
+
+                        </div>
 
                         <!--Название-->
                         <div class="name">
@@ -73,9 +85,6 @@
                             </p>
                         </div>
 
-                        <div class="result">
-
-                        </div>
 
                         <!--Сами вопросы-->
                         <div class="qu1">
@@ -105,7 +114,8 @@
                                 <label for="q3" style="text-align:center;"><b>3. В одной из первых книг, посвящённых
                                         этим
                                         людям в конце 19-го века Бодри де Сонье писал: "Охота на них является спортом
-                                        парижской полиции". Сейчас ситуация мало изменилась. Назовите их.</b></label><br>
+                                        парижской полиции". Сейчас ситуация мало изменилась. Назовите
+                                        их.</b></label><br>
                             </p>
                             <p>Введите ответ: <input name="q3" id="lop" type="text"></p>
                         </div>
@@ -151,7 +161,8 @@
                                 <label for="q7" style="text-align:center;"><b>7. В деревнях на острове Тенерифе обычно
                                         есть
                                         главные площади, где плавно и неспешно пьют кофе и играют в шахматы. Если такая
-                                        площадь совсем маленькая, она называется "паусИта". А если побольше?</b></label><br>
+                                        площадь совсем маленькая, она называется "паусИта". А если
+                                        побольше?</b></label><br>
                             </p>
                             <p>Введите ответ: <input name="q7" id="lop" type="text"></p>
                         </div>
@@ -188,7 +199,8 @@
                                         южан
                                         на марше. Композиция должна была растянуться на полкилометра. Но замысел так и
                                         не
-                                        был осуществлён. Сколько человек изображено на самой известной работе Борглума?</b></label><br>
+                                        был осуществлён. Сколько человек изображено на самой известной работе
+                                        Борглума?</b></label><br>
                             </p>
                             <p>Введите ответ: <input name="q10" id="lop" type="text"></p>
                         </div>
@@ -200,98 +212,112 @@
 
 
 
-        </script>
 
-        <script>
-            var k = 0;
-            function lol(it) {
-                var secs = sessionStorage.getItem('secs') || 11;
-                var timer = setInterval(function () {
-                    secs--;
-                    it++;
-                    console.log(it);
-                    var element = document.getElementById("status");
-                    element.innerHTML = "<h2>У вас осталось <b>" + secs + "</b> секунд до закрытия вопроса</h2>";
+                <script>
+                    var k = 0;
+                    function lol() {
+                        it = 0;
+                        var secs = sessionStorage.getItem('secs') || 41;
+                        var timer = setInterval(function () {
+                            secs--;
+                            it++;
+
+                            document.getElementById("status").innerHTML = "<h2>У вас осталось <b>" + secs + "</b> секунд до закрытия вопроса</h2>";
+
+                            var button = document.querySelector('input[type="submit"]');
+                            button.addEventListener('click', function (evt) {
+                                it = 42;
+                            });
+
+                            if (k == 40) {
+                                document.getElementById("status").remove();
+                                document.querySelector('input[type="submit"]').remove();
+                                document.querySelector('.name').remove();
+                                element = document.getElementById("result");
+                                qwe = document.createElement('h2');
+                                qwe.innerHTML = "<p>" + sessionStorage.getItem('Username') + ', вы правильно ответили на ' + k + ' вопросов.' + "</p>";
+                                element.appendChild(qwe);
+                            };
+
+                            if (it == 43) {
+                                k++;
+                                sessionStorage.removeItem('secs');
+                                clearInterval(timer);
+                                lol();
+                            }
+
+                            else if (secs < 1 && it < 42) {
+                                k++;
+                                sessionStorage.removeItem('secs');
+                                document.querySelector('input[type="submit"]').click();
+                                clearInterval(timer);
+                                if (k <= 39) {
+                                    lol();
+                                };
+                            }
+
+                            else {
+                                sessionStorage.setItem('secs', secs);
+                            }
+                        }, 1000)
+                    }
+                </script>
+
+
+
+                <script>
+                    var answers = ['университет', 'ухо', 'автомобилисты', 'куй железо, пока горячо', 'человек-невидимка',
+                        'артисткой', 'пауза', 'её падение', 'темно', 'четверо'];
+
+                    ok = 0;
+                    var func = 0;
                     var button = document.querySelector('input[type="submit"]');
+
                     button.addEventListener('click', function (evt) {
-                        it = 12;
+                        evt.preventDefault();
+                        var change = document.querySelector('.qu1');
+                        change.remove();
+                        change = document.querySelector('.no');
+                        if (change != null) {
+                            change.classList.remove('no');
+                        };
                     });
-                    if (k == 10) {
-                        document.getElementById("status").remove();
-                        document.querySelector('input[type="submit"]').remove();
-                        document.querySelector('.name').remove();
+
+
+                    function change_quest() {
+
+                        if (func == 0) {
+                            sessionStorage.setItem('Username', document.getElementById('username').value);
+                        };
+                        func++;
+                        if (document.getElementById('lop').value == answers[func - 1]) {
+                            ok++;
+                        };
                     };
-                    if (it == 13) {
-                        k++;
-                        sessionStorage.removeItem('secs');
-                        clearInterval(timer);
-                        lol(0);
-                        console.log('o', k);
-                    }
-                    else if (secs < 1 && it < 12) {
-                        k++;
-                        sessionStorage.removeItem('secs');
-                        document.querySelector('input[type="submit"]').click();
-                        clearInterval(timer);
-                        console.log('o', k);
-                        lol(0);
-                    }
-                    else {
-                        sessionStorage.setItem('secs', secs);
-                    }
-                }, 1000)
-            }
-        </script>
+                </script>
 
 
-
-        <script>
-            var func = 0;
-            var button = document.querySelector('input[type="submit"]');
-            button.addEventListener('click', function (evt) {
-                evt.preventDefault();
-                var change = document.querySelector('.qu1');
-                change.remove();
-                change = document.querySelector('.no');
-                change.classList.remove('no');
-            });
+                <script>
+                    lol();
+                </script>
 
 
-            function change_quest() {
-                if (func == 0) {
-                    var username = document.getElementById('username').value;
-                    console.log('lol', username);
-                    sessionStorage.setItem('Username', username);
-                };
-                func++;
-                var answer = document.getElementById('lop').value;
-                console.log(answer);
-                sessionStorage.setItem('Answer' + func, answer);
-            };
-        </script>
+                <script>
 
-
-        <script>
-            lol(0);
-        </script>
-
-
-        <script>
-
-        </script>
-        </header>
-    </div>
+                </script>
+            </header>
+        </div>
 
 
 
 
-    <!-- Copyright -->
-    <div id="copyright">
-        <ul>
-            <li>Created by &copy;Sergey Pinchuk</li>
-            <li>Design by Sergey Pinchuk</li>
-        </ul>
-    </div>
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>Created by &copy;Sergey Pinchuk</li>
+                <li>Design by Sergey Pinchuk</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Scripts -->
