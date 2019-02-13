@@ -229,7 +229,7 @@
                                 it = 42;
                             });
 
-                            if (k == 40) {
+                            if (k == 10) {  //КОЛИЧЕСТВО ВОПРОСОВ
                                 document.getElementById("status").remove();
                                 document.querySelector('input[type="submit"]').remove();
                                 document.querySelector('.name').remove();
@@ -266,8 +266,8 @@
 
 
                 <script>
-                    var answers = ['университет', 'ухо', 'автомобилисты', 'куй железо, пока горячо', 'человек-невидимка',
-                        'артисткой', 'пауза', 'её падение', 'темно', 'четверо'];
+                    var answers = ['университет', 'ухо', 'автомобилисты', 'куйжелезопокагорячо', 'человекневидимка',
+                        'артисткой', 'пауза', 'еепадение', 'темно', 'четверо'];
 
                     ok = 0;
                     var func = 0;
@@ -290,7 +290,7 @@
                             sessionStorage.setItem('Username', document.getElementById('username').value);
                         };
                         func++;
-                        if (document.getElementById('lop').value == answers[func - 1]) {
+                        if (document.getElementById('lop').value.toLowerCase().replace(/[/. ,!?;]*/g, '') == answers[func - 1]) {
                             ok++;
                         };
                     };
