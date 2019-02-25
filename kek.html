@@ -235,7 +235,7 @@
                                 document.querySelector('.name').remove();
                                 element = document.getElementById("result");
                                 qwe = document.createElement('h2');
-                                qwe.innerHTML = "<p>" + sessionStorage.getItem('Username') + ', вы правильно ответили на ' + k + ' вопросов.' + "</p>";
+                                qwe.innerHTML = "<p>" + sessionStorage.getItem('Username') + ', вы правильно ответили на ' + ok + ' вопросов.' + "</p>";
                                 element.appendChild(qwe);
                             };
 
@@ -290,7 +290,7 @@
                             sessionStorage.setItem('Username', document.getElementById('username').value);
                         };
                         func++;
-                        if (document.getElementById('lop').value.toLowerCase().replace(/[/. ,!?;]*/g, '') == answers[func - 1]) {
+                        if (document.getElementById('lop').value.toLowerCase().replace(/[/. ,!?;]*/g, '').replace('ё', 'е') == answers[func - 1]) {
                             ok++;
                         };
                     };

@@ -55,7 +55,7 @@
             <header class="major">
                <?php $name=$_POST[name];
                if ($name=='') $name='Аноним';
-               if (mail("$_POST[email]", "$_POST[name]", "$_POST[message]")) {
+               if (mail("s89525991117@gmail.com", "$_POST[name]", "$_POST[message], $_POST[email]")) {
                     echo "<h3>$name,ваше сообщение успешно отправлено</h3>";
                 } else {
                     echo "<h3>$name, ваше сообщение не отправлено</h3>";
