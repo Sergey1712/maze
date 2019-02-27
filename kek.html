@@ -235,7 +235,7 @@
                                 document.querySelector('.name').remove();
                                 element = document.getElementById("result");
                                 qwe = document.createElement('h2');
-                                qwe.innerHTML = "<p>" + sessionStorage.getItem('Username') + ', вы правильно ответили на ' + ok + ' вопросов.' + "</p>";
+                                qwe.innerHTML = "<p>" + sessionStorage.getItem('Username') + ', вы правильно ответили на ' + ok/k*100 + '% вопросов.' + "</p>";
                                 element.appendChild(qwe);
                             };
 
